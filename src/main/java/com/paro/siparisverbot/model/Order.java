@@ -2,18 +2,18 @@ package com.paro.siparisverbot.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.HashMap;
+import javax.persistence.*;
+import java.util.Map;
 
 //@SuppressWarnings("JpaAttributeTypeInspection")
 @Data
 @Entity
 public class Order {
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int orderId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String orderId;
     private int userId;
-    private HashMap<Product, Integer> items;
+    @ElementCollection
+    private Map<Product, Integer> items;
 
 }

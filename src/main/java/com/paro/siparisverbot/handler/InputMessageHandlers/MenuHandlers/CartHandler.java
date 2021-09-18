@@ -49,7 +49,7 @@ public class CartHandler implements MenuHandler {
         String chatId = inputMsg.getChatId().toString();
         log.info("processUsersInput: CurrentBotState: {}", userService.getUsersCurrentBotState(userId));
         SendMessage sendMessage = messagesService.getReplyMessage(chatId,"reply.cart");
-        List<String> orderList = cartCache.getOrders(userId);
+        List<String> orderList = cartCache.getOrdersAsList(userId);
         System.out.println(orderList.toString());
         sendMessage.setText(sendMessage.getText()+" "+orderList.toString());
         userService.setUsersCurrentBotState(userId, BotState.CART);
